@@ -15,15 +15,18 @@ apihelper.proxy = proxy
 
 
 def get_price(hash_name):
-	response = requests.get('https://steamcommunity.com/market/priceoverview/?appid=730&country=US&currency=1&market_hash_name=' + hash_name, proxies=proxy)
 	try:
+		response = requests.get('https://steamcommunity.com/market/priceoverview/?appid=730&country=US&currency=1&market_hash_name=' + hash_name, proxies=proxy)
 		return response.json()['lowest_price']
 	except:
 		pass
 
 os.system('cls')
 while True:
-	response = requests.get('https://steamcommunity.com/market/recent?country=RU&language=russian&currency=1', proxies=proxy)
+	try:
+		response = requests.get('https://steamcommunity.com/market/recent?country=RU&language=russian&currency=1', proxies=proxy)
+	except:
+		continue
 	response_json = response.json()
 	if not response_json:
 		sleep(sleep_time)
