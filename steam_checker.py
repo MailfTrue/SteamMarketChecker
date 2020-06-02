@@ -10,6 +10,7 @@ proxy = {
     "https": "https://ADn53r:fB1D0y@213.166.72.225:9268"
 }
 exclude_words = ['Сувенирный',]
+chat_id = 448406310
 sleep_time = 5
 apihelper.proxy = proxy
 
@@ -23,7 +24,7 @@ def get_price(hash_name):
 
 os.system('cls')
 while True:
-	tb.send_chat_action(448406310, 'typing')
+	tb.send_chat_action(chat_id, 'typing')
 	try:
 		response = requests.get('https://steamcommunity.com/market/recent?country=RU&language=russian&currency=1', proxies=proxy)
 	except Exception as e:
@@ -67,5 +68,5 @@ while True:
 				markup.add(
 					types.InlineKeyboardButton('Открыть ТП', "https://steamcommunity.com/market/listings/730/" + item['market_hash_name'])
 				)
-				tb.send_message(448406310, message_text, reply_markup=markup)
+				tb.send_message(chat_id, message_text, reply_markup=markup)
 	sleep(sleep_time)
