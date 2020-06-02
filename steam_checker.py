@@ -18,14 +18,16 @@ def get_price(hash_name):
 	try:
 		response = requests.get('https://steamcommunity.com/market/priceoverview/?appid=730&country=US&currency=1&market_hash_name=' + hash_name, proxies=proxy)
 		return response.json()['lowest_price']
-	except:
-		pass
+	except Exception as e:
+		print('error passed', e)
 
 os.system('cls')
 while True:
+	tb.send_chat_action(448406310, 'typing')
 	try:
 		response = requests.get('https://steamcommunity.com/market/recent?country=RU&language=russian&currency=1', proxies=proxy)
-	except:
+	except Exception as e:
+		print('error passed', e)
 		continue
 	response_json = response.json()
 	if not response_json:
