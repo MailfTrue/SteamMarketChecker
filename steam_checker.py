@@ -54,13 +54,13 @@ while True:
 							item_price = '-'
 				stickers_text = '  -- ' + '\n  -- '.join(k.strip() for k in stickers)
 				message_text = '\n'.join([item['market_name'],
-					                      f'Минимальная цена: {price}',
-					                      f'Цена этого предмета: ${item_price}',
+					                      'Минимальная цена: ' + str(price),
+					                      'Цена этого предмета: $' + str(item_price),
 					                      'Наклейки:',
 					                      stickers_text])
 				markup = types.InlineKeyboardMarkup()
 				markup.add(
-					types.InlineKeyboardButton('Открыть ТП', f"https://steamcommunity.com/market/listings/730/{item['market_hash_name']}")
+					types.InlineKeyboardButton('Открыть ТП', "https://steamcommunity.com/market/listings/730/" + item['market_hash_name'])
 				)
 				tb.send_message(448406310, message_text, reply_markup=markup)
 	sleep(sleep_time)
