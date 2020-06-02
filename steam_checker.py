@@ -6,11 +6,11 @@ from time import sleep
 
 tb = TeleBot('1135142333:AAGoEjLyAa-t8hoi-B5CTamX-WapeEVds5o')
 proxy = {
-    "http": "http://vLQ3BM:XkKtSr@185.233.83.74:9166",
-    "https": "https://vLQ3BM:XkKtSr@185.233.83.74:9166"
+    "http": "http://ADn53r:fB1D0y@213.166.72.225:9268",
+    "https": "https://ADn53r:fB1D0y@213.166.72.225:9268"
 }
 exclude_words = ['Сувенирный',]
-sleep_time = 10
+sleep_time = 5
 apihelper.proxy = proxy
 
 
@@ -27,7 +27,7 @@ while True:
 	response_json = response.json()
 	if not response_json:
 		sleep(sleep_time)
-		print('Заблокировало')
+		print('Blocked')
 		continue
 	contexts = response_json.get('assets', {}).get('730', {})
 	for context in contexts:
